@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.heads {
+  text-align:center;
+}
+.form-fields {
+  display:grid;
+  justify-content:center;
+  grid-template-columns: 50vw;
+  grid-template-rows: 3vh;
+  grid-gap: 2vh;
+  margin:20px auto;
+}
+.input-username {
+  grid-column:1;
+  grid-row:1;
+  min-width: 120px;
+  max-width:200px;
+  margin:auto;
+
+}
+.input-comment {
+  margin:auto;
+  grid-column: 1;
+  grid-row:2;
+  width: 45vw;
+  margin:auto;
+  height: max-content;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+.submit-button {
+  grid-column: 1;
+  grid-row: 3;
+  width:90px;
+  margin:auto;
+}

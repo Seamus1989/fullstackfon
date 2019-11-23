@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
+import FormComponent from './formComponent'
+import HeadsUp from './headsUp'
+
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
+
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from "apollo-boost";
+
 import './App.css';
+
+
+
+const client = new ApolloClient({
+  uri : 'http://localhost:4000/graphql'
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client = {client}>
+      <HeadsUp/>
+      <FormComponent/>
+    </ApolloProvider>
   );
 }
 
+
+
+
+
+
+
 export default App;
+
+/*
+const query = gql`
+  {
+    getAllPosts {
+      content
+    }
+  }
+`;
+
+
+
+
+function Thing() {
+  const { loading, error, data } = useQuery(query);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+  return <div>fg</div>//data.getUserPosts.map((e) => <li>{e.content}</li>)
+}
+
+
+
+
+We have two routes
+  posts (all posts with likes and comments)
+  users (shows all posts by particular user)
+    on each post we can see posts
+
+we have fields for
+  username
+  Post content
+*/
