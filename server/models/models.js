@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const ObjectId = Schema.ObjectId;
 
-const userSchema = new Schema({
+const postSchema = new Schema({
+  content: String,
+  likes: Number,
   userName: String,
-  email: String
+  comments: [Object]
 });
 
-const User = mongoose.model('user', userSchema);
+const Posts = mongoose.model('posts', postSchema);
 
 module.exports = {
-  User
+  Posts
 };

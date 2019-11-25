@@ -6,8 +6,8 @@ const MongoStore = require('connect-mongo')(session);//
 const typeDefs = require("./schema/schema").typeDefs;
 const resolvers = require("./schema/resolvers");
 const server = new ApolloServer({ typeDefs, resolvers });
+
 const app = express();
-const { User } = require('./models/models');
 
 server.applyMiddleware({ app });
 
