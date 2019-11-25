@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import FormComponent from './formComponent'
 import HeadsUp from './headsUp'
 
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-
-
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from "apollo-boost";
 
 import './App.css';
 
