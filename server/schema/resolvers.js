@@ -1,5 +1,7 @@
 const uniqid = require('uniqid');
 const { Posts } = require('../models/models');
+const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false);
 
 module.exports = {
   Query: {
@@ -16,14 +18,14 @@ module.exports = {
         }
       },
       addComment: async(_, args) => {
+        console.log("ARGZZZZZ| "+args)
         try {
-          await Posts.updateOne(
+          let response = await Posts.findOneAndUpdate(
               { _id: args.postId },
               { $push: { comments : {...args, likes : 0} } },
-              {safe: true, upsert: true, new : true},
-              (err) => {if(err) console.log(err)}
+              {safe: true, upsert: true, new : true}
             )
-          return {...args, _id:args.postId, likes:0}
+          return response
         } catch(e) {
           return e.message
         }
