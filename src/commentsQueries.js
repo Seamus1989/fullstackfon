@@ -4,7 +4,6 @@ import { ADD_COMMENT } from './queries/queries'
 
 
 function CommentQueries({id}) {
-  console.log(id)
   const [input, setInput] = useState('')
 
   const handleInputChange = (e) =>{
@@ -22,25 +21,23 @@ function CommentQueries({id}) {
   }
   return (
     <>
-      <div>
-        <input
+      <div className = "comment-input-container">
+        <textarea
           className = "comment"
-          type = "text"
           name = "content"
-          contenteditable="true"
           placeholder = "Add your comment"
           onChange = {handleInputChange}
-          ></input>
+          ></textarea>
         <input
+          className = "username"
           type = "text"
           name = "username"
-          contenteditable="true"
           placeholder = "user name"
           onChange = {handleInputChange}
           ></input>
         <button
           className="crossmark"
-          onClick = {submitData}>
+          onClick = {(e) => submitData(e)}>
           Comment!
         </button>
       </div>

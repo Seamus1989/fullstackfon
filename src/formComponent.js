@@ -31,7 +31,7 @@ function FormComponent() {
           ></input>
 
         <textarea
-        className = "input-comment"
+        className = "input-post"
         placeholder = "enter a post..."
         name = "content"
         onChange = {handleInputChange}
