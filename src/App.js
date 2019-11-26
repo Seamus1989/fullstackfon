@@ -21,47 +21,5 @@ function App() {
   );
 }
 
-/*
-
-Add Date and sort into date order (if not already), log date and time
-like icon and all styling
-
-*/
-
-
-
-
 
 export default App;
-
-/*
-const query = gql`
-  {
-    getAllPosts {
-      content
-    }
-  }
-`;
-
-
-
-
-function Thing() {
-  const { loading, error, data } = useQuery(query);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
-  return <div>fg</div>//data.getUserPosts.map((e) => <li>{e.content}</li>)
-}
-
-
-
-
-We have two routes
-  posts (all posts with likes and comments)
-  users (shows all posts by particular user)
-    on each post we can see posts
-
-we have fields for
-  username
-  Post content
-*/

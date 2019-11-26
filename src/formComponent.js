@@ -52,31 +52,3 @@ function FormComponent() {
   )
 }
 export default FormComponent;
-/*
-Next we need to look at updating the cache upon making these mutations
-*/
-/*
-const query = gql`
-  {
-    getAllPosts {
-      content
-    }
-  }
-`;
-
-
-
-
-function Thing() {
-  const { loading, error, data } = useQuery(query);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
-  return <div>fg</div>//data.getUserPosts.map((e) => <li>{e.content}</li>)
-}
-type Posts {
-  id: ID!
-  content: String!
-  userName: String!
-  likes: Int
-}
-*/

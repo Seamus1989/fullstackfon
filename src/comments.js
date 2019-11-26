@@ -10,7 +10,6 @@ function Comments({id, comments}) {
     <>
     <div>
       {comments.map((e) => {
-        console.log(e)
         return (
           <>
           <p>
@@ -27,17 +26,6 @@ function Comments({id, comments}) {
     </div>
     </>
   )
-}
+};
 
 export default Comments;
-
-/*
-So the comments isnt returning from query
-
-{comments.map((e) => {
-  return (
-    <>
-    <p>{e.userName}: {e.content}</p>
-    </>
-  )
-})}*/
