@@ -1,48 +1,23 @@
 import React, { useState } from 'react';
-import { gql } from "apollo-boost";
-import { useMutation, useQuery } from '@apollo/react-hooks';
-import { onError } from "apollo-link-error";
+import Posts from './form'
+import { useMutation } from '@apollo/react-hooks';
 
-const link = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors)
-    graphQLErrors.map(({ message, locations, path }) =>
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      ),
-    );
+import { POST_MUTATION } from './queries/queries'
 
-  if (networkError) console.log(`[Network error]: ${networkError}`);
-});
-
-const POST_MUTATION = gql`
-  mutation AddPost($content: String!, $userName: String!) {
-    addPost(content: $content, userName: $userName) {
-      _id
-      content
-      likes
-    }
-  }
-`;
-const GET_POSTS = gql`
- {
-    getAllPosts {
-      content
-      _id
-      likes
-    }
-  }
-`;
 function FormComponent() {
   const [input, setInput] = useState('')
   const handleInputChange = (e) =>{
     setInput({...input, [e.currentTarget.name]: e.currentTarget.value })
     console.log(input)
   }
-  const [addPost, { data }] = useMutation(POST_MUTATION);
+  const [ addPost ] = useMutation(POST_MUTATION);
 
   const submitData = (e) => {
     e.preventDefault();
-    addPost({ variables: { userName: input.username, content: input.content } })
+    addPost({
+      variables: { userName: input.username, content: input.content },
+      refetchQueries: ["GetAllPosts"]
+    })
   }
   return (
     <>
@@ -75,26 +50,6 @@ function FormComponent() {
 
     </>
   )
-}
-function Posts() {
-  const { loading, error, data } = useQuery(GET_POSTS);
-  if (loading) return null;
-  if (error) return `Error! ${error.message}`;
-
-  return (
-    <>
-    {
-      data.getAllPosts.map((e) => {
-        return (
-          <>
-            <p key = {e._id}>{e.content}</p>
-            <input type = "text" placeholder = "add your comment"></input>
-          </>
-        )
-      })
-    }
-    </>
-  );
 }
 export default FormComponent;
 /*
