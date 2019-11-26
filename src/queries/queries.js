@@ -20,7 +20,6 @@ export const GET_POSTS = gql`
       comments {
         content
         userName
-        _id
         likes
       }
     }
