@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CommentQueries from './commentsQueries'
 import Comments from './comments.js'
+import SinglePost from './singlePost'
 import { useQuery } from '@apollo/react-hooks';
 import { GET_POSTS } from './queries/queries';
 
 function Posts() {
   const { loading, error, data } = useQuery(GET_POSTS);
+
   if (loading) return null;
   if (error) return `Error! ${error.message}`;
 
@@ -16,11 +18,12 @@ function Posts() {
         return (
           <>
             <div className = "contain-buttons">
-              <p
-                className = "actual-post"
-                key = {e._id}>
-                {e.content}<i style = {{fontSize:"94%"}}> - {e.userName}</i>
-              </p>
+              <SinglePost
+                likes = {e.likes}
+                userName = {e.userName}
+                _id = {e._id}
+                content = {e.content}
+              />
 
               <div>
                 <Comments id = {e._id} comments = {e.comments}/>
@@ -36,4 +39,5 @@ function Posts() {
     </>
   );
 }
+
 export default Posts;
