@@ -25,6 +25,7 @@ code {
 .input-username {
   border: 1px solid #E1DFDF;
   box-shadow: 1px 1px 1px #E1DFDF;
+  font-family: 'Roboto Mono', monospace;
   border-radius:3px;
   grid-column:1;
   grid-row:1;
@@ -35,6 +36,7 @@ code {
 
 }
 .input-post {
+  font-family: 'Roboto Mono', monospace !important;
   border: 1px solid #E1DFDF;
   box-shadow: 1px 1px 1px #E1DFDF;
   border-radius:3px;
@@ -51,6 +53,7 @@ code {
 }
 .submit-button {
   grid-column: 1;
+  font-family: 'Roboto Mono', monospace;
   background : linear-gradient(to bottom, rgba(250, 145, 97, 0.7), rgba(247, 59, 28, 0.69));
   border-radius:5px;
   color:#fff;
@@ -75,6 +78,7 @@ code {
   text-align:center;
 }
 .comment {
+  font-family: 'Roboto Mono', monospace;
   grid-row:2;
   margin:auto;
   height:45px;
@@ -96,6 +100,7 @@ code {
 }
 .crossmark {
   grid-row:4;
+  font-family: 'Roboto Mono', monospace;
   height:95%;
   background : linear-gradient(to bottom, rgba(250, 145, 97, 0.7), rgba(247, 59, 28, 0.69));
   border-radius:5px;
