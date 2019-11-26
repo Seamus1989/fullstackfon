@@ -9,6 +9,7 @@ module.exports = {
     type Mutation {
         addPost(content: String!, userName: String!) : Posts
         addComment(content: String!, postId: String!, userName: String!) : Comments
+        likePost(postId:String!) : Posts
     }
 
     type Posts {
