@@ -111,3 +111,6 @@ code {
   display:grid;
   grid-row-gap:5px;
 }
+.fa, .fa-thumbs-o-up{
+  color:blue;
+}
