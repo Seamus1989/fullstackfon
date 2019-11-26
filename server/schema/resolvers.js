@@ -17,16 +17,13 @@ module.exports = {
       },
       addComment: async(_, args) => {
         try {
-          let response = await Posts.updateOne(
+          await Posts.updateOne(
               { _id: args.postId },
               { $push: { comments : {...args, likes : 0} } },
               {safe: true, upsert: true, new : true},
-              function(err) {
-                console.log(err)
-              }
+              (err) => {if(err) console.log(err)}
             )
-          console.log(response)
-          return response;
+          return {...args, _id:args.postId, likes:0}
         } catch(e) {
           return e.message
         }

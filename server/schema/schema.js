@@ -22,7 +22,7 @@ module.exports = {
       content: String!
       userName: String!
       likes: Int
-
+      _id: String
     }
 `
 }
