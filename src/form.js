@@ -16,7 +16,12 @@ function Posts() {
         return (
           <>
             <div className = "contain-buttons">
-              <p className = "actual-post" key = {e._id}><b>{e.userName}</b>: {e.content}</p>
+              <p
+                className = "actual-post"
+                key = {e._id}>
+                {e.content}<i style = {{fontSize:"94%"}}> - {e.userName}</i>
+              </p>
+
               <div>
                 <Comments id = {e._id} comments = {e.comments}/>
               </div>
