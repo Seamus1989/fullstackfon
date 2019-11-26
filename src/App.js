@@ -8,10 +8,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import './App.css';
 
-
-
 const client = new ApolloClient({
-  uri : 'http://localhost:4000/graphql'
+  uri: "http://localhost:4000/graphql"
 })
 
 function App() {
@@ -23,7 +21,12 @@ function App() {
   );
 }
 
+/*
 
+Add Date and sort into date order (if not already), log date and time
+like icon and all styling
+
+*/
 
 
 
