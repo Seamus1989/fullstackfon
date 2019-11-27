@@ -10,8 +10,10 @@ module.exports = {
   },
   Mutation: {
       addPost: async(_, args) => {
+        let date = new Date();
         try {
-          let response = await Posts.create({...args, likes: 0, comments:[]});
+
+          let response = await Posts.create({...args, likes: 0, comments:[], date: date });
           return response
         } catch(e) {
             return e.message;
@@ -19,9 +21,10 @@ module.exports = {
       },
       addComment: async(_, args) => {
         try {
+          let date = new Date();
           let response = await Posts.findOneAndUpdate(
               { _id: args.postId },
-              { $push: { comments : {...args, likes : 0} } },
+              { $push: { comments : {...args, likes : 0, date: date } } },
               {safe: true, upsert: true, new : true}
             )
           return response

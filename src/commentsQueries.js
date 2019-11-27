@@ -8,8 +8,8 @@ function CommentQueries({id}) {
 
   const handleInputChange = (e) =>{
     setInput({...input, [e.currentTarget.name]: e.currentTarget.value })
-    console.log(input)
   }
+  
   const [ addComment ] = useMutation(ADD_COMMENT);
 
   const submitData = (e) => {

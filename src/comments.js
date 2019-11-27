@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 
 function Comments({id, comments}) {
@@ -12,14 +12,12 @@ function Comments({id, comments}) {
       {comments.map((e) => {
         return (
           <>
-          <p>
-            {e.content}
-            <i style = {{fontSize:"94%"}}><br/> - {e.userName} </i>
-            <div style = {{fontSize:"90%", display:"inline"}}>
-              <i class="fa fa-thumbs-o-up"></i>
-               &nbsp;{e.likes}
-            </div>
-          </p>
+            <SingleComment
+              userName = {e.userName}
+              likes= {e.likes}
+              date = {e.date}
+              content = {e.content}
+              />
           </>
         )
       })}
@@ -27,5 +25,43 @@ function Comments({id, comments}) {
     </>
   )
 };
+function SingleComment({
+  content,
+  userName,
+  likes,
+  date
+  }) {
+    const [dateData, setDateData] = useState({})
 
+    useEffect(() => {
+      let month = new Date(Number(date)).getDate();
+      let day = new Date(Number(date)).getMonth()+1;
+      let hour = new Date(Number(date)).getHours();
+      let min = new Date(Number(date)).getMinutes();
+      if (hour === 0) hour = "00"
+      setDateData({
+        month,
+        day,
+        hour,
+        min,
+      })
+    },[])
+
+    return (
+      <>
+      <div>
+        {content}
+        <div style = {{fontSize: "85%", paddingLeft:10}}>
+          <i style = {{fontSize:"94%", display:"inline"}}><br/> - {userName} </i>
+          <div style = {{fontSize:"85%", display:"inline"}}>
+            {dateData.day}/{dateData.month} {dateData.hour}:{dateData.min}&nbsp;</div>
+          <div style = {{fontSize:"90%", display:"inline"}}>
+            <i style = {{display:"inline"}} class="fa fa-thumbs-o-up"></i>
+             &nbsp;{likes}
+          </div>
+        </div>
+      </div>
+      </>
+    )
+}
 export default Comments;

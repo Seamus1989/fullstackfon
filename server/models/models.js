@@ -6,7 +6,8 @@ const postSchema = new Schema({
   content: String,
   likes: Number,
   userName: String,
-  comments: [Object]
+  comments: [Object],
+  date: Date
 });
 
 const Posts = mongoose.model('posts', postSchema);

@@ -18,12 +18,14 @@ module.exports = {
       likes: Int
       comments: [Comments]
       _id: String
+      date: String
     }
     type Comments {
       content: String!
       userName: String!
       likes: Int
       _id: String
+      date: String
     }
 `
 }

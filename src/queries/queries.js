@@ -7,6 +7,7 @@ export const POST_MUTATION = gql`
       _id
       content
       likes
+      date
     }
   }
 `;
@@ -17,10 +18,12 @@ export const GET_POSTS = gql`
       _id
       likes
       userName
+      date
       comments {
         content
         userName
         likes
+        date
       }
     }
   }
@@ -32,6 +35,17 @@ export const ADD_COMMENT = gql`
       content
       userName
       likes
+      date
+    }
+  }
+`
+export const LIKE_POST = gql`
+  mutation LikePost($postId: String!) {
+    likePost(postId: $postId) {
+      content
+      _id
+      likes
+      date
     }
   }
 `

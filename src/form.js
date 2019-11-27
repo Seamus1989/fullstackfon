@@ -22,14 +22,16 @@ function Posts() {
                 likes = {e.likes}
                 userName = {e.userName}
                 _id = {e._id}
+                key = {e._id}
                 content = {e.content}
+                date = {e.date}
               />
 
               <div>
-                <Comments id = {e._id} comments = {e.comments}/>
+                <Comments key = {e._id} id = {e._id} comments = {e.comments}/>
               </div>
               <div>
-                <CommentQueries id = {e._id}/>
+                <CommentQueries key = {e._id} id = {e._id}/>
               </div>
             </div>
           </>
