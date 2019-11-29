@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Posts from './form'
 import { useMutation } from '@apollo/react-hooks';
 
 import { POST_MUTATION } from './queries/queries'
 
 function FormComponent() {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState({username:"", content:""})
   const handleInputChange = (e) =>{
     setInput({...input, [e.currentTarget.name]: e.currentTarget.value })
     console.log(input)
@@ -17,7 +17,7 @@ function FormComponent() {
     addPost({
       variables: { userName: input.username, content: input.content },
       refetchQueries: ["GetAllPosts"]
-    })
+    }).then(() => setInput({username:"", content:""}))
   }
   return (
     <>
@@ -28,6 +28,7 @@ function FormComponent() {
           type = "text"
           name = "username"
           onChange = {handleInputChange}
+          value = {input.username}
           ></input>
 
         <textarea
@@ -35,6 +36,7 @@ function FormComponent() {
         placeholder = "enter a post..."
         name = "content"
         onChange = {handleInputChange}
+        value = {input.content}
         ></textarea>
 
         <button
