@@ -9,7 +9,7 @@ function Comments({id, comments}) {
   return (
     <>
     <div>
-      {comments.map((e) => {
+      {comments.sort((a,b)=> b.date - a.date).map((e) => {
         return (
           <>
             <SingleComment
@@ -49,7 +49,7 @@ function SingleComment({
 
     return (
       <>
-      <div>
+      <div className = "comment-whole">
         {content}
         <div style = {{fontSize: "85%", paddingLeft:10}}>
           <i style = {{fontSize:"94%", display:"inline"}}><br/> - {userName} </i>

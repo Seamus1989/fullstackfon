@@ -14,7 +14,7 @@ function Posts() {
   return (
     <>
     {
-      data.getAllPosts.map((e) => {
+      data.getAllPosts.sort((a,b)=> b.date - a.date).map((e) => {
         return (
           <>
             <div className = "contain-buttons">
