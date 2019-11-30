@@ -34,11 +34,10 @@ function SingleComment({
     const [dateData, setDateData] = useState({})
 
     useEffect(() => {
-      let month = new Date(Number(date)).getDate();
-      let day = new Date(Number(date)).getMonth()+1;
-      let hour = new Date(Number(date)).getHours();
-      let min = new Date(Number(date)).getMinutes();
-      if (hour === 0) hour = "00"
+      let month = new Date(Number(date)).getDate().toString().padStart(2, "0");
+      let day = (new Date(Number(date)).getMonth()+1).toString().padStart(2, "0");
+      let hour = new Date(Number(date)).getHours().toString().padStart(2, "0");
+      let min = new Date(Number(date)).getMinutes().toString().padStart(2, "0");
       setDateData({
         month,
         day,
